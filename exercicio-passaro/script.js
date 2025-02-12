@@ -47,10 +47,10 @@ function update() {
     // Laço de repetição para atualizar a posição do pássaro
     for (let i = 0; i < 1; i++) {
         // Atualiza a posição do pássaro
-        passaro.x += 1 * passaro.direcao // Reduz a velocidade de incremento
+        passaro.x += 1 * passaro.direcao // Move o passaro dependendo da direção
         passaro.y = 300 + 100 * Math.sin(passaro.x * Math.PI / 180) // Função seno para a trajetória parabólica
 
-        // Verifica se o pássaro atingiu os limites e inverte a direção
+        // Verifica se o pássaro atingiu o limite e inverte a direção
         if (passaro.x >= 700) {
             passaro.setFlip(true, false)
             passaro.direcao = -1
