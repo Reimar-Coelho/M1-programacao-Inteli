@@ -4,7 +4,11 @@ class FimDeJogo extends Phaser.Scene {
     }
 
     init(dados) {
-        this.pontuacaoFinal = dados.pontuacao || 0;
+        this.pontuacaoFinal = dados.pontuacao || 0; // Pontuação final importada da cena de jogo
+    }
+
+    preload() {
+        this.load.font('PressStart2P', 'assets/fonts/PressStart2P-Regular.ttf', 'truetype');
     }
 
     create() {
@@ -12,11 +16,11 @@ class FimDeJogo extends Phaser.Scene {
         const textoFimDeJogo = this.add.text(
             this.game.config.width/2, 
             this.game.config.height/2 - 100, 
-            'FIM DE JOGO', 
+            'GAME OVER', 
             { 
-                fontFamily: 'Montserrat', 
-                fontSize: '90px', 
-                fill: '#333'
+                fontFamily: 'PressStart2P', 
+                fontSize: '50px', 
+                fill: '#000'
             }
         );
         textoFimDeJogo.setOrigin(0.5);
@@ -25,11 +29,11 @@ class FimDeJogo extends Phaser.Scene {
         const textoPontuacaoFinal = this.add.text(
             this.game.config.width/2, 
             this.game.config.height/2, 
-            'Pontuação: ' + this.pontuacaoFinal, 
+            'Pontuação:' + this.pontuacaoFinal, 
             { 
-                fontFamily: 'Montserrat', 
+                fontFamily: 'PressStart2P', 
                 fontSize: '45px', 
-                fill: '#a0f'
+                fill: '#F85D58'
             }
         );
         textoPontuacaoFinal.setOrigin(0.5);
@@ -40,22 +44,13 @@ class FimDeJogo extends Phaser.Scene {
             this.game.config.height/2 + 100, 
             'TENTAR NOVAMENTE', 
             { 
-                fontFamily: 'Montserrat', 
+                fontFamily: 'PressStart2P', 
                 fontSize: '32px', 
                 fill: '#00bfa9'
             }
         );
         textoTentarNovamente.setOrigin(0.5);
         textoTentarNovamente.setInteractive({ useHandCursor: true });
-        
-        // Efeito de hover
-        textoTentarNovamente.on('pointerover', () => {
-            textoTentarNovamente.setStyle({ fill: '#00a090' });
-        });
-        
-        textoTentarNovamente.on('pointerout', () => {
-            textoTentarNovamente.setStyle({ fill: '#00bfa9' });
-        });
         
         // Reiniciar o jogo ao clicar
         textoTentarNovamente.on('pointerdown', () => {

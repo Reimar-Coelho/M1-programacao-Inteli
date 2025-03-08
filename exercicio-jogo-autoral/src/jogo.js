@@ -9,13 +9,16 @@ var pn;
 
 
 class Jogo extends Phaser.Scene {
+
     constructor() {
         super("Jogo");
     }
 
     preload() {
-        this.load.svg("jogador", "assets/player-01.svg", { scale: .8 });
-        this.load.svg("plataforma-n", "assets/tile-n-01.svg", { scale: 1 });
+        this.load.svg("jogador", "assets/Soldier2.svg", { scale: .8 });
+        this.load.svg("plataforma", "assets/plataforma2.svg", { scale: 1 });
+        this.load.font('Poppins', 'assets/fonts/Poppins-light.ttf', 'truetype');
+
     }
 
     create() {
@@ -23,7 +26,7 @@ class Jogo extends Phaser.Scene {
         pontuacao = 0;
         
         // Criar chão
-        chao = this.physics.add.image(game.config.width/2, 830, 'plataforma-d');
+        chao = this.physics.add.image(game.config.width/2, 830, 'plataforma');
         chao.setImmovable();
         chao.scale = 6;
 
@@ -32,7 +35,7 @@ class Jogo extends Phaser.Scene {
         this.criarJogador();
         
         // Interface de usuário
-        textoPontuacao = this.add.text(16, 16, 'Pontuação: 0', { fontFamily: 'Montserrat', fontSize: '32px', fill: '#a0f' }).setScrollFactor(0);
+        textoPontuacao = this.add.text(16, 16, 'Pontuação: 0', { fontFamily: 'Poppins', fontSize: '32px', fill: '#F85D58' }).setScrollFactor(0);
         textoPontuacao.depth = 2;
         
         // Tutorial de movimento
@@ -40,7 +43,7 @@ class Jogo extends Phaser.Scene {
             this.game.config.width/2, 
             this.game.config.height - 60, 
             'Use as setas ← → para se mover', 
-            { fontFamily: 'Montserrat', fontSize: '24px', fill: '#555' }
+            { fontFamily: 'Poppins', fontSize: '24px', fill: '#555' }
         );
         textoTutorial.setOrigin(0.5);
         textoTutorial.setScrollFactor(0);
@@ -51,8 +54,8 @@ class Jogo extends Phaser.Scene {
         this.physics.add.collider(jogador, grupoPlataformas, this.quicar, null, this);
 
         // Rastreamento de câmera e plataforma
-        this.cameraYMin = 99999;
-        this.plataformaYMin = 99999;
+        this.cameraYMin = 999;
+        this.plataformaYMin = 999;
         
         // Controles
         this.tecla_esquerda = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
@@ -79,12 +82,32 @@ class Jogo extends Phaser.Scene {
         this.cameras.main.centerOnY(jogador.y);
         
         // Movimento horizontal
-        if (this.tecla_direita.isDown) jogador.body.velocity.x = 400;
-        else if (this.tecla_esquerda.isDown) jogador.body.velocity.x = -400;
+        if (this.tecla_direita.isDown) {
+            jogador.body.velocity.x = 400;
+            
+            // Se estava olhando para a esquerda, vira para a direita
+            if (!jogador.direcaoDireita) {
+                jogador.scaleX = 1; // Mantém a escala original para olhar à direita
+                jogador.direcaoDireita = true;
+            }
+        }
+        else if (this.tecla_esquerda.isDown) {
+            jogador.body.velocity.x = -400;
+            
+            // Se estava olhando para a direita, vira para a esquerda
+            if (jogador.direcaoDireita) {
+                jogador.scaleX = -1; // Inverte a escala horizontal para olhar à esquerda
+                jogador.direcaoDireita = false;
+            }
+        }
         else jogador.body.velocity.x = 0;
         
         // Transição entre bordas da tela
-        this.physics.world.wrap(jogador, jogador.width / 6, false);
+        if (jogador.x < 0) {
+            jogador.x = this.physics.world.bounds.width;
+        } else if (jogador.x > this.physics.world.bounds.width) {
+            jogador.x = 0;
+        }
 
         // Verificar fim de jogo
         if(jogador.y > this.cameraYMin + this.game.config.height) {
@@ -100,7 +123,7 @@ class Jogo extends Phaser.Scene {
             if(item.y > this.cameraYMin + this.game.config.height){
                 item.destroy();
                 var eixoX = Phaser.Math.Between(100, this.physics.world.bounds.width - 100);
-                pn = this.criarPlataformaIndividual(eixoX, eixoY, 'plataforma-n');
+                pn = this.criarPlataformaIndividual(eixoX, eixoY, 'plataforma');
             }
         }, this);
     }
@@ -115,6 +138,7 @@ class Jogo extends Phaser.Scene {
 
         jogador.yOrig = jogador.y;
         jogador.yMudanca = 0;
+        jogador.direcaoDireita = true; // Variável para acompanhar a direção
     }
     
     criarPlataformas() {
@@ -125,7 +149,7 @@ class Jogo extends Phaser.Scene {
             pn = this.criarPlataformaIndividual(
                 Phaser.Math.Between(25, this.physics.world.bounds.width - 25), 
                 this.physics.world.bounds.height - 200 - 200 * i, 
-                'plataforma-n'
+                'plataforma'
             );
         }
     } 
