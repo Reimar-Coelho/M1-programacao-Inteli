@@ -30,7 +30,11 @@ c) A saída será undefined seguido de undefined
 
 d) A saída será erro em ambas as linhas que utilizam console.log
 
+***
 
+**Resposta:** letra A, pelo motivo de o X ser um var, que tem escopo global e pode ser acessada mesmo antes de ter um valor definido, já o Y é um let, que não é global e só pode ser acessado depois do código chegar a linha onde ela foi definida.
+
+______
 **2) O seguinte código JavaScript tem um erro que impede sua execução correta. Analise e indique a opção que melhor corrige o problema. Justifique sua resposta.**
 
 ```javascript
@@ -51,6 +55,16 @@ c) Substituir if (a || b === 0) por if (a && b === 0)
 
 d) Remover completamente a verificação if (a || b === 0)
 
+***
+
+**Resposta:** letra A, pois no caso de 
+```javascript
+(a || b === 0)
+```
+o código faz apenas a verificação do b, ignorando a, isso acontece pelo motivo de cada verificação antes e depois do operador lógico acontecer de forma separada, então o computador entende essa linha como "se a é verdadeiro ou b é estritamente igual a 0, *executar bloco de código*", portanto a opção correta seria:
+```javascript
+(a === 0 || b === 0)
+```
 ______
 **3) Ao executar esse código, qual será a saída no console? Indique a alternativa correta e justifique sua resposta.**
 ```javascript
@@ -84,6 +98,10 @@ c) O código imprime 50.
 
 d) O código gera um erro.
 
+***
+
+**Resposta:** letra B, pois no case "eletrônico" não tem o **break**, o que causa de a função imprimir o próximo case com o **break**, resultando na variável preco ter um valor de 200.
+
 ______
 **4) Ao executar esse código, qual será a saída no console? Indique a alternativa correta e justifique sua resposta.**
 ```javascript
@@ -100,6 +118,22 @@ b) 6
 c) 18
 
 d) 24
+
+***
+
+**Resposta:** letra D, pelo motivo de o
+```javascript
+map(x => x * 2)
+```
+criar um novo array baseado no primeiro, só que multiplicando todos os elementos por 2, no 
+```javascript
+filter(x => x > 5)
+```
+ele filtra apenas os elementos desse novo array que são maiores que 5 e no
+```javascript
+reduce((a, b) => a + b, 0)
+```
+ele soma todos os elementos desse array filtrado, resultando em 24, que é a resultado de 4+8+10, que é o array filtrado.
 ______
 **5) Qual será o conteúdo do array lista após a execução do código? Indique a alternativa correta e justifique sua resposta.**
 
@@ -116,6 +150,19 @@ b) ["banana", "abacaxi", "manga"]
 c) ["banana", "abacaxi", "manga", "laranja"]
 
 d) ["banana", "maçã", "uva", "abacaxi", "manga"]
+
+***
+
+**Resposta:** letra C, pois no **splice**, o primeiro número que aparece é a posição do array onde os elementos vão ser adicionados, e o segundo número é quantos deles vão ser substituidos pelos elementos do splice, onde por exemplo:
+```javascript
+let array=["a","b"]
+lista.splice(x, y, "elemento1", "elemento2");
+```
+**x** seria a posição do array que seria substituido e **y** seria a quantidade de elementos substituidos, sendo o **x** = 0 e **y** = 1 por exemplo, o resultado seria:
+```javascript
+[ 'elemento1', 'elemento2', 'b' ]
+```
+
 ______
 **6) Abaixo há duas afirmações sobre herança em JavaScript. Indique a alternativa correta e justifique sua resposta**
 
@@ -130,6 +177,11 @@ b) As duas afirmações são verdadeiras, mas a segunda não justifica a primeir
 c) A primeira afirmação é verdadeira, e a segunda é falsa.
 
 d) A primeira afirmação é falsa, e a segunda é verdadeira.
+
+***
+
+**Resposta:** letra A, a II justifica a I pelo motivo de a quando ele fala que uma classe herda os métodos de outra, ela faz isso "extendendo" o que seria a primeira classe a partir de complementos.
+
 ______
 **7) Dado o seguinte código. Indique a alternativa correta e justifique sua resposta.**
 
@@ -172,6 +224,10 @@ b) I, II e III são verdadeiras.
 c) Apenas II é verdadeira.
 
 d) Apenas I é verdadeira.
+
+***
+
+**Resposta:** letra A, pois o código está correto e o método apresentar() da classe Funcionario de fato sobrescreve o método apresentar() da classe Pessoa. Isso é um conceito do polimorfismo na POO. 
 
 ______
 
