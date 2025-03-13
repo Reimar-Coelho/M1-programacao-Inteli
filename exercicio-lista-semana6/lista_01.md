@@ -244,6 +244,10 @@ c) A asserção é verdadeira e a razão é verdadeira, mas a razão não explic
 
 d) A asserção é verdadeira e a razão é verdadeira, e a razão explica a asserção.
 
+***
+
+**Resposta:** letra C, pois ambas estão corretas, a assercão é verdadeira e a razão também é, mas a razão não justifica a asserção, ela não explica o nivel teórico do que é polimorfismo. A sobrecarga deve ser usada quando a mesma ação será realizada com dados de entrada diferentes, sendo assim, resultando em formas ligeiramente diferentes.
+
 ______
 
 # Questões dissertativas
@@ -259,6 +263,28 @@ function somaArray(numeros) {
 }
 console.log(somaArray([1, 2, 3, 4]));
 ```
+
+***
+
+**Resposta**: 
+
+```javascript
+function somaArray(numeros) {
+
+    let soma = 0; // Declaração da variável para poder referenciar ela dentro dela mesma 
+    for (i = 0; i < numeros.length; i++) { // *array*.size não existe, o correto é *array*.length
+        soma += numeros[i]*2; // soma = soma + (numeros[i]*2)
+    }
+    return soma;
+}
+console.log(somaArray([1, 2, 3, 4]));
+```
+
+Primeiro erro, é números.size, sendo o correto, numeros.length. Faltou declarar a variável *soma* antes do *for*, para inicializar a variável antes do laço de repetição, e conseguir chamar o número. Para realizar a operação da soma do dobro dos números de um array, escrevemos,
+```javascript
+soma += numeros[i]*2;
+```
+Ele seleciona o número de acordo com a sua posição do array e depois multiplica por dois. Então os números [1,2,3,4] viram [2,4,6,8] e depois soma eles, resultado em 20
 ______
 10) Crie um exemplo prático no qual você tenha duas classes:
 
@@ -266,3 +292,34 @@ ______
 - Uma classe `Livro` que herda de `Produto` e modifica o método `calcularDesconto()`, aplicando um desconto de 20% no preço dos livros.
 
 Explique como funciona a herança nesse contexto e como você implementaria a modificação do método na classe `Livro`.
+
+***
+
+**Resposta**: 
+
+```javascript
+class Produto {
+    constructor(nome, preco) {
+        this.nome = nome
+        this.preco = preco
+        this.desc = 10
+    }
+
+    calcularDesconto() {
+        return this.preco - (this.preco * this.desc/100)
+    }
+}
+
+class Livro extends Produto {
+    constructor(nome, preco) {
+        super(nome, preco)
+        this.desc = 20
+    }
+
+    calcularDesconto() {
+        return this.preco - (this.preco * this.desc/100)
+    }
+    
+}
+```
+A herança funciona de forma que a classe Livro herda todos os atributos e métodos da classe Produto, podendo assim, acessar e modificar os métodos e atributos da classe pai. Para implementar a mudança, eu mudo o método de desconto para aplicar o valor pedido
