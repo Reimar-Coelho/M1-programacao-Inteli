@@ -49,6 +49,9 @@ C) O código avalia a expressão booleana, imprime `true` e, em seguida, verific
 
 D) O código avalia a expressão booleana, imprime `false` e ordena os valores em ordem crescente.
 
+***
+
+**Resposta:** 
 
 ______
 
@@ -110,8 +113,12 @@ B) analisarCredito1() exibirá: 'Seu crédito foi negado. Saldo disponível: -60
 C) analisarCredito1() exibirá: 'Seu crédito foi negado. Saldo disponível: -200.', enquanto analisarCredito2() exibirá: 'Seu crédito foi aprovado. Saldo disponível: 100.'
 
 D) Ambas as funções exibirão: 'Seu crédito foi aprovado Saldo disponível: 500.'
-______
 
+***
+
+**Resposta:** 
+
+______
 **3)** Considere o seguinte trecho de código em JavaScript:
 ```javascript
 //EX03
@@ -134,8 +141,12 @@ B) O código verifica se a idade pertence à faixa adulta. Se for, exibe "Você 
 C) O código verifica se a idade está entre 18 e 60 anos e, se for, imprime "Você é um adulto!". Se não estiver nesse intervalo, imprime "Você está na melhor idade!".
 
 D) O código verifica se a idade é menor de 18, entre 18 e 60 ou acima de 60, imprimindo uma mensagem específica para cada caso.
-______
 
+***
+
+**Resposta:** 
+
+______
 **4)** Qual será o resultado impresso no console após a execução do seguinte código?
 ```javascript
 //EX04
@@ -203,6 +214,10 @@ Dispositivo 4 não pode ser ligado. Energia insuficiente.
 
 Dispositivo 5 não pode ser ligado. Energia insuficiente.
 
+***
+
+**Resposta:** 
+
 ______
 
 **5)** Qual é a principal função do método update() em um jogo desenvolvido com Phaser.js?
@@ -216,6 +231,11 @@ B) O método update() é chamado continuamente a cada quadro (frame) do jogo, se
 C) O método update() renderiza todos os sprites na tela e garante que a física do jogo seja processada corretamente.
 
 D) O método update() é chamado apenas uma vez após a criação da cena, sendo utilizado para configurar variáveis iniciais do jogo.
+
+***
+
+**Resposta:** 
+
 ______
 
 **6)** Qual é o principal objetivo do módulo Matter.js Physics em Phaser.js?
@@ -229,6 +249,10 @@ B) Gerenciar eventos de entrada do usuário, como cliques e toques na tela, perm
 C) Renderizar gráficos otimizados para jogos 2D e garantir uma taxa de quadros estável.
 
 D) Criar animações automáticas para sprites e objetos interativos sem necessidade de programação de movimentação.
+
+***
+
+**Resposta:** 
 
 ______
 
@@ -245,6 +269,11 @@ Pedidos entre R$50,00 e R$199,99 (inclusive) → "Frete com custo adicional!"
 Pedidos de R$200,00 ou mais → "Frete grátis!"
 ```
 Implemente um pseudocódigo que receba o valor total da compra e exiba a classificação correta do frete para o cliente.
+
+***
+
+**Resposta:** 
+
 ______
 
 **8)** Considere a implementação da classe base Veiculo em um sistema de modelagem de veículos. Sua tarefa é implementar, utilizando pseudocódigo, as classes derivadas Carro e Moto, que herdam da classe Veiculo, adicionando atributos específicos e métodos para calcular o consumo de combustível de um carro e de uma moto, respectivamente.
@@ -262,6 +291,11 @@ Método CalcularConsumo():
 ```
 Implementação genérica para cálculo de consumo, a ser sobrescrita pelas subclasses.
 Agora, implemente as classes Carro e Moto, garantindo que ambas herdem de Veiculo e possuam métodos específicos para calcular o consumo de combustível com base na quilometragem e eficiência do veículo.
+
+***
+
+**Resposta:** 
+
 ______
 
 **9)** Você é um cientista da NASA e está ajudando no desenvolvimento de um sistema de pouso para sondas espaciais em Marte. Seu objetivo é calcular o tempo necessário para que a sonda reduza sua velocidade até um nível seguro para pouso, considerando uma velocidade inicial de entrada na atmosfera marciana e uma taxa de desaceleração constante causada pelo atrito atmosférico e retrofoguetes.
@@ -275,6 +309,11 @@ Considere a fórumla de atualização velocidade:
     velocidade = velocidadeInicial - desaceleracao * tempo
 ```
 Seu programa deve determinar quanto tempo será necessário para que a sonda atinja uma velocidade segura de pouso, sem ultrapassar os limites estabelecidos.
+
+***
+
+**Resposta:** 
+
 ______
 
 **10)** Em um sistema de análise financeira, as operações de investimento de uma empresa podem ser representadas por matrizes, onde cada linha representa um tipo de investimento e cada coluna representa um período de tempo.
@@ -307,3 +346,7 @@ Escrever("Total de investimentos acumulados:")
 ImprimirMatriz(totalInvestimentos)  
 ```
 Agora, implemente a função MultiplicarMatrizesInvestimento(matrizA, matrizB), que multiplica as duas matrizes, simulando o efeito de diferentes fatores de crescimento e impacto financeiro nos investimentos ao longo do tempo.
+
+***
+
+**Resposta:** 
