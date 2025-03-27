@@ -51,7 +51,7 @@ D) O código avalia a expressão booleana, imprime `false` e ordena os valores e
 
 ***
 
-**Resposta:** 
+**Resposta:** Letra **A**
 
 ______
 
@@ -116,7 +116,7 @@ D) Ambas as funções exibirão: 'Seu crédito foi aprovado Saldo disponível: 5
 
 ***
 
-**Resposta:** 
+**Resposta:** Letra **A**
 
 ______
 **3)** Considere o seguinte trecho de código em JavaScript:
@@ -144,7 +144,7 @@ D) O código verifica se a idade é menor de 18, entre 18 e 60 ou acima de 60, i
 
 ***
 
-**Resposta:** 
+**Resposta:** Letra **D**
 
 ______
 **4)** Qual será o resultado impresso no console após a execução do seguinte código?
@@ -216,7 +216,7 @@ Dispositivo 5 não pode ser ligado. Energia insuficiente.
 
 ***
 
-**Resposta:** 
+**Resposta:** Letra **D**
 
 ______
 
@@ -234,7 +234,7 @@ D) O método update() é chamado apenas uma vez após a criação da cena, sendo
 
 ***
 
-**Resposta:** 
+**Resposta:** Letra ****
 
 ______
 
@@ -252,7 +252,7 @@ D) Criar animações automáticas para sprites e objetos interativos sem necessi
 
 ***
 
-**Resposta:** 
+**Resposta:** Letra ****
 
 ______
 
