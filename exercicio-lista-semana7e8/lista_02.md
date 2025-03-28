@@ -234,7 +234,7 @@ D) O método update() é chamado apenas uma vez após a criação da cena, sendo
 
 ***
 
-**Resposta:** Letra ****
+**Resposta:** Letra **B**
 
 ______
 
@@ -252,7 +252,7 @@ D) Criar animações automáticas para sprites e objetos interativos sem necessi
 
 ***
 
-**Resposta:** Letra ****
+**Resposta:** Letra **A**
 
 ______
 
@@ -273,6 +273,25 @@ Implemente um pseudocódigo que receba o valor total da compra e exiba a classif
 ***
 
 **Resposta:** 
+
+```
+Função ClassificarFrete(valorCompra):
+    # Verifica se o valor da compra é menor que 50
+    Se valorCompra < 50 então:
+        # Caso seja menor que 50, o frete não está disponível
+        Exibir "Frete não disponível!"
+    
+    # Verifica se o valor está entre 50 e 199.99 (inclusive)
+    Senão se valorCompra >= 50 e valorCompra <= 199.99 então:
+        # Caso esteja nesse intervalo, o frete tem custo adicional
+        Exibir "Frete com custo adicional!"
+    
+    # Se não se encaixar nas condições anteriores
+    Senão:
+        # Significa que o valor é 200 ou mais, então o frete é grátis
+        Exibir "Frete grátis!"
+
+```
 
 ______
 
@@ -296,6 +315,58 @@ Agora, implemente as classes Carro e Moto, garantindo que ambas herdem de Veicul
 
 **Resposta:** 
 
+```
+# Classe base que representa um veículo genérico
+Classe Veiculo:
+    Atributos:
+        modelo
+        ano
+
+    # Construtor que inicializa o modelo e o ano do veículo
+    Construtor(modelo, ano):
+        modelo <- modelo
+        ano <- ano
+
+    # Método genérico de cálculo de consumo, a ser sobrescrito pelas subclasses
+    Método CalcularConsumo():
+        Retornar "Método genérico, a ser sobrescrito"
+
+# Classe Carro que herda de Veiculo
+Classe Carro herda Veiculo:
+    Atributos:
+        quilometragem
+        eficienciaCombustivel  # km por litro
+
+    # Construtor que inicializa os atributos do carro, incluindo os da classe pai
+    Construtor(modelo, ano, quilometragem, eficienciaCombustivel):
+        Chamar Construtor Veiculo(modelo, ano)  # Inicializa modelo e ano
+        quilometragem <- quilometragem
+        eficienciaCombustivel <- eficienciaCombustivel
+
+    # Método que calcula o consumo do carro com base na quilometragem e eficiência
+    Método CalcularConsumo():
+        consumo <- quilometragem / eficienciaCombustivel
+        Retornar consumo
+
+# Classe Moto que herda de Veiculo
+Classe Moto herda Veiculo:
+    Atributos:
+        quilometragem
+        eficienciaCombustivel  # km por litro
+
+    # Construtor que inicializa os atributos da moto, incluindo os da classe pai
+    Construtor(modelo, ano, quilometragem, eficienciaCombustivel):
+        Chamar Construtor Veiculo(modelo, ano)  # Inicializa modelo e ano
+        quilometragem <- quilometragem
+        eficienciaCombustivel <- eficienciaCombustivel
+
+    # Método que calcula o consumo da moto, considerando um fator de 20% a mais de consumo
+    Método CalcularConsumo():
+        consumo <- quilometragem / eficienciaCombustivel * 1.2
+        Retornar consumo
+
+```
+
 ______
 
 **9)** Você é um cientista da NASA e está ajudando no desenvolvimento de um sistema de pouso para sondas espaciais em Marte. Seu objetivo é calcular o tempo necessário para que a sonda reduza sua velocidade até um nível seguro para pouso, considerando uma velocidade inicial de entrada na atmosfera marciana e uma taxa de desaceleração constante causada pelo atrito atmosférico e retrofoguetes.
@@ -313,6 +384,45 @@ Seu programa deve determinar quanto tempo será necessário para que a sonda ati
 ***
 
 **Resposta:** 
+
+```
+# Função que simula o pouso de uma sonda em Marte
+# Considera velocidade inicial, desaceleração constante, velocidade segura de pouso e tempo máximo permitido
+Função SimularPouso(velocidadeInicial, desaceleracao, velocidadeSegura, tempoMaximo):
+    
+    # Inicializa o tempo em 0
+    tempo <- 0
+
+    # Inicializa a velocidade atual com a velocidade de entrada na atmosfera
+    velocidadeAtual <- velocidadeInicial
+
+    # Verifica se a desaceleração fornecida é válida (não pode ser zero ou negativa)
+    Se desaceleracao <= 0 então:
+        # Desaceleração inválida pode causar instabilidade ou pouso falho
+        Exibir "Erro: desaceleração inválida. Operação abortada."
+        Retornar -1
+
+    # Loop de simulação: continua enquanto a velocidade for maior que a segura
+    # e o tempo não ultrapassar o limite máximo de descida
+    Enquanto velocidadeAtual > velocidadeSegura e tempo < tempoMaximo faça:
+        # Atualiza a velocidade com base na fórmula fornecida
+        velocidadeAtual <- velocidadeInicial - desaceleracao * tempo
+
+        # Incrementa o tempo a cada iteração (1 segundo por ciclo)
+        tempo <- tempo + 1
+
+    # Após sair do loop, verifica se a velocidade final atingiu o nível seguro
+    Se velocidadeAtual <= velocidadeSegura então:
+        # Caso sim, o pouso foi seguro dentro do tempo permitido
+        Exibir "Pouso seguro em " + tempo + " segundos."
+    Senão:
+        # Caso contrário, o tempo máximo foi excedido sem atingir velocidade segura
+        Exibir "Tempo máximo excedido. Pouso instável."
+
+    # Retorna o tempo total da simulação (mesmo que falhe, para fins de análise)
+    Retornar tempo
+
+```
 
 ______
 
@@ -349,4 +459,58 @@ Agora, implemente a função MultiplicarMatrizesInvestimento(matrizA, matrizB), 
 
 ***
 
-**Resposta:** 
+**Resposta:**
+
+```
+# Função que multiplica duas matrizes de investimento
+# Simula o efeito de fatores de crescimento aplicados aos investimentos ao longo do tempo
+Função MultiplicarMatrizesInvestimento(matrizA, matrizB):
+
+    # Verifica se o número de colunas da primeira matriz é igual ao número de linhas da segunda
+    Se tamanho(matrizA[0]) ≠ tamanho(matrizB) então:
+        # Se as dimensões forem incompatíveis, a multiplicação não é possível
+        Retornar "As matrizes não podem ser multiplicadas. Dimensões incompatíveis."
+    Senão:
+        # Obtém o número de linhas da matriz A
+        linhasA <- tamanho(matrizA)
+
+        # Obtém o número de colunas da matriz B
+        colunasB <- tamanho(matrizB[0])
+
+        # Obtém o número de colunas da matriz A (ou linhas da matriz B)
+        colunasA_ou_linhasB <- tamanho(matrizB)
+
+        # Cria uma nova matriz resultado com dimensões apropriadas (linhasA x colunasB)
+        matrizResultado <- novaMatriz(linhasA, colunasB)
+
+        # Percorre cada linha da matriz A
+        Para i de 0 até linhasA - 1 faça:
+
+            # Percorre cada coluna da matriz B
+            Para j de 0 até colunasB - 1 faça:
+
+                # Inicializa a soma que representará o valor resultante da multiplicação linha x coluna
+                soma <- 0
+
+                # Percorre os elementos da linha de A e coluna de B
+                Para k de 0 até colunasA_ou_linhasB - 1 faça:
+                    soma <- soma + matrizA[i][k] * matrizB[k][j]
+
+                # Atribui o resultado à posição correspondente na matriz resultado
+                matrizResultado[i][j] <- soma
+
+        # Retorna a matriz contendo o resultado da multiplicação
+        Retornar matrizResultado
+
+# Exemplo de uso da função
+investimentos <- [[1000, 2000], [1500, 2500]]
+fatoresCrescimento <- [[1.1, 0.9], [0.8, 1.2]]
+
+# Realiza a multiplicação das matrizes de investimento pelos fatores de crescimento
+resultado <- MultiplicarMatrizesInvestimento(investimentos, fatoresCrescimento)
+
+# Exibe o resultado final da simulação de impacto financeiro
+Escrever("Resultado dos investimentos multiplicados:")
+ImprimirMatriz(resultado)
+
+``` 
